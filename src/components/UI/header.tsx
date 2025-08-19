@@ -1,5 +1,6 @@
 "use client"
 
+import { layoutConfig } from "@/config/layout.config";
 import { siteConfig } from "@/config/site.config";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button} from "@heroui/react";
 import Image from "next/image";
@@ -31,12 +32,12 @@ export default function Header() {
   }
 
   return (
-    <Navbar>
+    <Navbar className={`h-[${layoutConfig.headerHeight}]`}>
       <NavbarBrand>
 
         <Link href='/' className="flex gap-3 items-center">
           <Logo />
-          <p className="font-bold text-inherit">Zakuska</p>
+          <p className="font-bold text-inherit">{siteConfig.title}</p>
         </Link>
         
       </NavbarBrand>
@@ -44,7 +45,7 @@ export default function Header() {
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {getNavItems()}
       </NavbarContent>
-      
+
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
           <Link href="#">Логин</Link>

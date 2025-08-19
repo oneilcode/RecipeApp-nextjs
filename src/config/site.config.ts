@@ -1,6 +1,6 @@
 export const siteConfig = {
-    title: "Рецепты",
-    description: "Приложение по созданию рецептов",
+    title: "ZAKUSKA",
+    description: "Кулинарный конструктор рецептов",
     navItems: [
         {href: "/", label: "Рецепты"},
         {href: "/ingredients", label: "Ингридиенты"},
