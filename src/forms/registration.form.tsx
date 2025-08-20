@@ -1,5 +1,6 @@
 "use client"
 
+import { registerUser } from '@/actions/register';
 import { Form } from '@heroui/form';
 import { Button, Input } from '@heroui/react';
 import React, { useState } from 'react';
@@ -22,7 +23,8 @@ const RegistrationForm = ({ onClose }: IProps) => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log("Form submitted :", formData);
+        
+        const result = await registerUser(formData)
         
         onClose()
     }
@@ -31,7 +33,6 @@ const RegistrationForm = ({ onClose }: IProps) => {
     <Form className="w-full" onSubmit={handleSubmit}>
         <Input
             isRequired
-            label="Email"
             name="email"
             placeholder="Введите ваш email"
             type="email"
@@ -46,7 +47,6 @@ const RegistrationForm = ({ onClose }: IProps) => {
 
         <Input
             isRequired
-            label="Password"
             name="password"
             placeholder="Введите пароль"
             type="password"
@@ -61,7 +61,6 @@ const RegistrationForm = ({ onClose }: IProps) => {
 
         <Input
             isRequired
-            label="ConfirmPassword"
             name="confirmPassword"
             placeholder="Подтвердите пароль"
             type="password"

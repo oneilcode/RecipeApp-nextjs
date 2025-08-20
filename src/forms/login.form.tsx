@@ -26,7 +26,6 @@ const LoginForm = ({ onClose }: IProps) => {
     <Form className="w-full" onSubmit={handleSubmit}>
         <Input
             isRequired
-            label="Email"
             name="email"
             placeholder="Введите ваш email"
             type="email"
@@ -40,7 +39,6 @@ const LoginForm = ({ onClose }: IProps) => {
 
         <Input
             isRequired
-            label="Password"
             name="password"
             placeholder="Введите пароль"
             type="password"
