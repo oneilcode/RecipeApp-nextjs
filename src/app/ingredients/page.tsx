@@ -1,7 +1,7 @@
 const IngredientsPage = () => {
     return (
       <div>
-          IngredientsPage
+         2
       </div>
     );
   };
