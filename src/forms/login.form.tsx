@@ -1,5 +1,6 @@
 "use client"
 
+import { signInWithCredentials } from '@/actions/sign-in';
 import { Form } from '@heroui/form';
 import { Button, Input } from '@heroui/react';
 import React, { useState } from 'react';
@@ -17,8 +18,11 @@ const LoginForm = ({ onClose }: IProps) => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log("Form submitted :", formData);
+      
+        await signInWithCredentials(formData.email, formData.password)
         
+        window.location.reload()
+
         onClose()
     }
 
