@@ -2,11 +2,10 @@
 
 import { ingredienSchema } from "@/schema/zod";
 import prisma from "@/utils/prisma";
-import { ZodError } from "zod";
+import { success, ZodError } from "zod";
 
 export async function createIngredient(formData: FormData) {
     try {
-        console.log("formData", formData);
 
         const data = {
             name: formData.get("name") as string,
@@ -33,11 +32,36 @@ export async function createIngredient(formData: FormData) {
         return { success: true, ingredient }
         
     } catch (error) {
-        if(error instanceof ZodError) {
-            return { error: error.errors.map((e) => e.message).join(", ")}
-        }
+        // if(error instanceof ZodError) {
+        //     return { error: error.errors.map((e) => e.message).join(", ")}
+        // }
 
         console.error("Ошибка создания ингридиента:", error)
         return {error: "Ошибка создания ингридиента"}
     }
 } 
+
+export async function getIngredients() {
+    try {
+        const ingredients = await prisma.ingredient.findMany()
+
+        return { success: true, ingredients }
+    } catch (error) {
+        console.error("Ошибка получения ингридиентов:", error)
+        return {error: "Ошибка при получении ингридиентов"}
+    }
+    
+}
+
+export async function deleteIngredients(id: string) {
+    try {
+        const ingredient = await prisma.ingredient.delete({
+            where: { id }
+        })
+
+        return { success: true, ingredient }
+    } catch (error) {
+        console.error("Ошибка удаления ингридиента:", error)
+        return {error: "Ошибка при удалении ингридиента"}
+    }
+}

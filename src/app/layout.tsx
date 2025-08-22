@@ -41,12 +41,16 @@ export default async function RootLayout({
         <Providers>
           <SessionProvider session={session}>
             <AppLoader>
-              <Header />
-              <Title />
-              <main className={`flex flex-col max-w-[1024px] mx-auto px-[24px] justify-start`} style={{height: `calc(100vh - ${layoutConfig.footerHeight} - ${layoutConfig.headerHeight})`}}>
-                {children}
-              </main>
-              <footer className={`h-[${layoutConfig.footerHeight}] text-center justify-center`}>{siteConfig.title} | {siteConfig.description} | 2025</footer>
+              <div className="flex min-h-screen flex-col justify-between">
+                <div className="flex flex-col">
+                  <Header />
+                  <Title />
+                  <main className={`flex flex-col max-w-[1024px] mx-auto px-[24px] justify-start`} style={{height: `calc(100vh - ${layoutConfig.footerHeight} - ${layoutConfig.headerHeight})`}}>
+                    {children}
+                  </main>
+                </div>
+                <footer className={`h-[${layoutConfig.footerHeight}] text-center justify-center`}>{siteConfig.title} | {siteConfig.description} | 2025</footer>
+              </div>
             </AppLoader>
           </SessionProvider>
         </Providers>
