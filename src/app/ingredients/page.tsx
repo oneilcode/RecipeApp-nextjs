@@ -1,9 +1,11 @@
+import IngredientForm from "@/forms/ingredient.form";
+
 const IngredientsPage = () => {
     return (
-      <div>
-         2
+      <div className="flex items-center justify-center w-full">
+         <IngredientForm />
       </div>
     );
   };
 
-  export default IngredientsPage
+  export default IngredientsPage  
