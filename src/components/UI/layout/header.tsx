@@ -38,7 +38,13 @@ export default function Header() {
 
   const getNavItems = () => {
     return (
-      siteConfig.navItems.map(link => {
+      siteConfig.navItems.filter((item) =>{
+        if(item.href === "/ingredients") {
+          return isAuth
+        }
+        return true
+      })     
+      .map(link => {
         const isActive = pathname === link.href
         return (
           <NavbarItem  key={link.href}>
